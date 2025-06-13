@@ -1,0 +1,8 @@
+setting up server config:
+npm init -y (creates package.json in server)
+touch server.js
+change index.js to server.js in "main" of package.json
+npm i express (install express)
+npm i nodemon -D (restarts server each time changes are made)
+"start": "node server" (script to start server)
+"dev": "nodemon server" 
