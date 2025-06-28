@@ -1,0 +1,348 @@
+.container{
+  display:flex;
+  flex-direction: column;
+  
+}
+
+.text-container{
+  margin-top:30px;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.buttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 600px;
+  transition: background 0.2s ease;
+}
+
+button { /*mix and unmix buttons*/
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.5);
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(255, 255, 255, 0.5);
+}
+
+.tooltip {
+  position: relative;
+  cursor: pointer;
+  margin-left: 8px;
+  display: inline-block;
+}
+
+.circle-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;     /* circle size */
+  height: 20px;
+  border-radius: 50%;
+  background-color: #555;  /* circle color */
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  font: calibri;
+  user-select: none;
+}
+
+.tooltiptext {
+  visibility: hidden;
+  width: 220px;
+  background-color: black;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* position above icon */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+h1{
+  color: white;
+  text-shadow: blue;
+  font-size: 50px;
+  margin-bottom:0px;
+}
+
+h3{
+  color: white;
+  text-shadow: blue;
+  font-weight:normal;
+  font-size:17px;
+}
+
+.palette {
+  position: absolute; 
+  bottom: 30px;
+  width: 100vh; 
+  height: 70px;
+  background-color: rgb(176, 175, 175);
+  border-radius: 10px;
+  display:flex;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-bottom: 10px;
+  align-items: center;
+}
+
+.scrollable {
+  display:flex;
+  flex-direction: row;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.add {
+  height: 70px;
+  width: 70px;
+}
+
+.add button{
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.add img, .image img{ /*size of the add button*/
+  width: 60;
+  height: 60%;
+  object-fit: contain;
+  margin-right: 20px;
+}
+
+.color-display-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.picked-color-box {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+
+/*each new color should be in 20px increments away from each other*/
+.colored-box {
+  width: 60px;
+  height: 60px;
+  margin-right: 20px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  position: relative; /* important for positioning the remove button */
+  cursor:pointer;
+  font-size: 13px;
+  border-radius: 5px;
+  letter-spacing: 0.03rem;
+  font: calibri;
+}
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(105, 104, 104, 0.5); /* dim background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* on top of everything else */
+}
+
+.modal-content {
+  position:relative;
+  background: rgb(255, 255, 255);
+  padding: 40px;
+  border-radius: 12px;
+  /*box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);*/
+  display: flex;
+  flex-direction: row; /*buttons left to right */
+  gap: 20px; /*gap for buttons*/
+  min-width: 300px; /*box width */
+  justify-content: center; /* actually centers button to modal container*/
+}
+.modal-content button {
+  padding: 6px 10px;
+  font-size: 12px;
+  margin: 4px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.color-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.color-picker{
+  display:flex;
+  justify-content: center;
+}
+
+.color-picker-buttons{
+  margin-top: 10px;
+  display:flex;
+  flex-direction:row;
+  gap:20px;
+}
+
+.add_color{
+  width:100px;
+  height:100px;
+}
+
+.remove{
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 12px;
+  line-height: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+#main_exit { /*so that the button isnt just at the edge of the model content*/
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  z-index: 10;
+}
+
+.toast {
+  width: 200px;
+  height: 200px;
+  color: white;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;    /* Horizontally center */
+  padding: 0;                  /* Remove default spacing */
+  white-space: nowrap;
+}
+
+.small-button {
+  padding: 4px;
+  width: 60px;
+  height: 60px;
+  background: #eee;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+.small-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.image-buttons {
+  display: flex;
+  justify-content: center;  /* center horizontally */
+  align-items: center;      /* center vertically */
+  width: 100%;
+  gap:12px;
+}
+.file-input-wrapper input[type="file"] {
+  width: 200px; /* or any desired width */
+  display: block; /* to remove inline quirks */
+}
+.image-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px; /* adds space between choose file, canvas, and button */
+}
+
+input[type="file"] {
+  display: block;
+  margin: 0 auto;      /* centers the button and its label */
+  text-align: center;
+}
+
+.upload-image{
+  margin-top: 20px; 
+  width: 50%;
+  height: 50%;
+}
+
+.upload-canvas {
+  max-width: 400px;
+  height: auto;
+  border: 1px solid #ccc;
+  cursor:pointer;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: rgb(184, 184, 184);
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  font:calibri;
+}
+
+.custom-file-upload:hover {
+  background-color: #ddd;
+  
+}
+
+.custom-file-upload input[type="file"] {
+  display: none;
+}
